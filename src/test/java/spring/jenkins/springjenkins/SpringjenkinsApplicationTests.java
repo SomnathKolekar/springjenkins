@@ -16,6 +16,7 @@ class SpringjenkinsApplicationTests {
 		logger.info("test case executing started...");
 		logger.info("second commit test case executing started...");
 		assertEquals(true, true);
+		
 	}
 
 }
