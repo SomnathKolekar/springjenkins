@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>spring.jenkins</groupId>
-	<artifactId>springjenkins</artifactId>
+	<artifactId>springjenkins-docker-integration-sample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springjenkins</name>
 	<description>Demo project for Spring Boot</description>
