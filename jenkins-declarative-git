@@ -1,0 +1,15 @@
+pipeline{
+    agent any
+    stages{
+        stage("welcome"){
+            steps{
+                echo "sammy"
+            }
+        }
+        stage("Git Ckeckout"){
+            steps{
+                git credentialsId: 'e44c52d8-3585-4216-897e-31fac6006e41', url: 'https://github.com/SomnathKolekar/springjenkins'
+            }
+        }
+    }
+}
