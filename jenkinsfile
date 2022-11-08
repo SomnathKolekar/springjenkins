@@ -23,7 +23,9 @@ pipeline{
         }
         stage("Build docker Image"){
             steps{
-                bat "docker build . -t skolekar/springjenkins-docker-integration-sample:$DOCKER_TAG"
+             echo "${DOCKER_TAG}"
+             echo env.DOCKER_TAG
+                bat "docker build . -t skolekar/springjenkins-docker-integration-sample:env.DOCKER_TAG"
             }
         }
         stage("DockerHub Push"){
