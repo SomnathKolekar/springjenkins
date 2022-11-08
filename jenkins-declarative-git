@@ -23,5 +23,13 @@ pipeline{
                 bat "docker build . -t skolekar/springjenkins-docker-integration-sample:v1"
             }
         }
+        stage("DockerHub Push"){
+            steps{
+                withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPassword')]) {
+                bat "docker login -u skolekar -p ${dockerHubPassword}"
+                bat "docker push skolekar/springjenkins-docker-integration-sample"
+                }
+            }
+        }
     }
 }
