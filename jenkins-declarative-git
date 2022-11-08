@@ -2,9 +2,6 @@ currentBuild.displayName = "declarative-demo-#"+currentBuild.number
 pipeline{
     agent any
     
-    environment{
-        
-    }
     stages{
         stage("welcome"){
             steps{
