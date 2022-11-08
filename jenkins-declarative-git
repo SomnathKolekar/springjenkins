@@ -1,5 +1,10 @@
+currentBuild.displayName = "declarative-demo-#"+currentBuild.number
 pipeline{
     agent any
+    
+    environment{
+        DOCKER_TAG = getDockerTag()
+    }
     stages{
         stage("welcome"){
             steps{
@@ -11,5 +16,19 @@ pipeline{
                 git credentialsId: 'e44c52d8-3585-4216-897e-31fac6006e41', url: 'https://github.com/SomnathKolekar/springjenkins'
             }
         }
+        stage("maven build"){
+            steps{
+                bat "mvn clean install"
+            }
+        }
+        stage("Build docker Image"){
+            steps{
+                bat "docker build . -t skolekar/springjenkins-docker-integration-sample:${getDockerTag}"
+            }
+        }
     }
+}
+def getDockerTag(){
+    def tag = bat script: 'git rev-parse HEAD', returnStdout: true
+    return tag
 }
