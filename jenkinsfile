@@ -15,15 +15,10 @@ pipeline{
             steps{
                 git credentialsId: 'e44c52d8-3585-4216-897e-31fac6006e41', url: 'https://github.com/SomnathKolekar/springjenkins'
             }
-        }
-        stage("maven build"){
-            steps{
-                bat "mvn clean install"
-            }
-        }
+        
         stage("Build docker Image"){
             steps{
-                bat "docker build -t skolekar/springjenkins-docker-integration-sample:${DOCKER_TAG} ."
+                echo ${DOCKER_TAG}
             }
         }
     }
