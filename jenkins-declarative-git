@@ -2,6 +2,9 @@ currentBuild.displayName = "declarative-demo-#"+currentBuild.number
 pipeline{
     agent any
     
+    environment{
+        DOCKER_TAG = getDockerTag()
+    }
     stages{
         stage("welcome"){
             steps{
@@ -32,4 +35,8 @@ pipeline{
             }
         }
     }
+}
+def getDockerTag(){
+    def tag = bat script: 'git rev-parse HEAD', returnStdout: true
+    return tag
 }
