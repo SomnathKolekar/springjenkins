@@ -21,9 +21,9 @@ pipeline{
                 bat "mvn clean install"
             }
         }
-        sstage("Build docker Image"){
+        stage("Build docker Image"){
             steps{
-                bat "docker build . -t skolekar/springjenkins-docker-integration-sample"
+                bat "docker build . -t skolekar/springjenkins-docker-integration-sample:env.DOCKER_TAG"
             }
         }
         stage("DockerHub Push"){
