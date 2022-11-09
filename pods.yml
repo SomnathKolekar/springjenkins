@@ -1,0 +1,12 @@
+apiversion: v1
+kind: Pod
+metadata:
+  name: springjenkins
+  labels:
+    app: springjenkins
+spec:
+  containers:
+    - name: springjenkins
+      image: skolekar/springjenkins-docker-integration-sample:latest
+      ports: 
+            - containerPort: 8081
